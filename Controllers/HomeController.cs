@@ -42,6 +42,7 @@ namespace app.Controllers
 
             var token = TokenService.GenerateToken(user);
             user.Password = "";
+
             return new
             {
                 message = "Olá sua mensagem chegou até seu front end."
