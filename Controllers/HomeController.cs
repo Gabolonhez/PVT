@@ -31,6 +31,23 @@ namespace app.Controllers
             };
         }
 
+        [HttpPost]
+        [Route("MessageWith")]
+        [AllowAnonymous]
+        public async Task<ActionResult<dynamic>> MessageWith([FromBody] User model)
+        {
+            var user = UserRepository.Get(model.UserName, model.Password);
+            if (user == null)
+                return NotFound(new { message = "Usuário ou senha inválido" });
+
+            var token = TokenService.GenerateToken(user);
+            user.Password = "";
+            return new
+            {
+                message = "Olá sua mensagem chegou até seu front end."
+            };
+        }
+
         [HttpGet]
         [Route("anonymous")]
         [AllowAnonymous]
