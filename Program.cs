@@ -55,22 +55,22 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Map(pattern: "/", requestDelegate: async context =>
-{
-    if (!context.WebSockets.IsWebSocketRequest)
-        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+//app.Map(pattern: "/", requestDelegate: async context =>
+//{
+//    if (!context.WebSockets.IsWebSocketRequest)
+//        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
 
-    using var webSocket =
-        await context.WebSockets.AcceptWebSocketAsync();
+//    using var webSocket =
+//        await context.WebSockets.AcceptWebSocketAsync();
 
-    var data = Encoding.ASCII.GetBytes($".NET Rocks: {DateTime.Now}");
+//    var data = Encoding.ASCII.GetBytes($".NET Rocks: {DateTime.Now}");
 
-    await webSocket.SendAsync(
-        data,
-        WebSocketMessageType.Text,
-        endOfMessage: true,
-        CancellationToken.None);
-});
+//    await webSocket.SendAsync(
+//        data,
+//        WebSocketMessageType.Text,
+//        endOfMessage: true,
+//        CancellationToken.None);
+//});
 
 app.UseWebSockets();
 
