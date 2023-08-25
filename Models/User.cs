@@ -23,5 +23,10 @@
         {
             this.Password = password;
         }
+
+        public void SetRules(string role)
+        {
+            this.Role = role;
+        }
     }
 }
