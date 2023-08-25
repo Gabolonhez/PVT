@@ -8,6 +8,7 @@ namespace app.Models
     {
         public string Id { get; set; }
         public string GroupName { get; set; }
+        public string IdUserGroupOwner { get; set; }
         public List<string> IdUsers { get; set; }
         public DateTime DateGroupCreation { get; set; }
         public string ImageGroup { get; set; }   
